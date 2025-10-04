@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { IAuthProvider, IUser, Role } from "./user.interface";
+import { IAuthProvider, IUser } from "./user.interface";
 
 const authProviderSchema = new Schema<IAuthProvider>(
   {
@@ -19,9 +19,9 @@ const userSchema = new Schema<IUser>(
     password: { type: String, required: true },
     role: {
       type: String,
-      enum: Object.values(Role),
-      default: Role.USER,
+      required: true,
     },
+    isVerified: { type: Boolean, required: true, default: false },
     auth: [authProviderSchema],
   },
   {
