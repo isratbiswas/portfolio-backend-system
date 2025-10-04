@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { envVars } from "./env";
+import { createAdmin } from "../utils/seedSuperAdmin";
 
 const connectDB = async () => {
   try {
@@ -10,5 +11,8 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
+(async () => {
+  await createAdmin();
+})();
 
 export default connectDB;

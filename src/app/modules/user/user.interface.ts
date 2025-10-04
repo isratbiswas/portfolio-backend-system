@@ -8,7 +8,7 @@ export interface IUser {
   name: string;
   email: string;
   password: string;
-  role: "ADMINN";
+  role: "ADMIN";
   isVerified: boolean;
   auth: IAuthProvider[];
 }
