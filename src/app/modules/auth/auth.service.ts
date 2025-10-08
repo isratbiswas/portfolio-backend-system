@@ -26,6 +26,7 @@ const credentialsLogin = async (payload: Partial<IUser>) => {
   const jwtPayload = {
     userId: isUserExist._id,
     email: isUserExist.email,
+    name: isUserExist.name,
     role: isUserExist.role,
   };
   console.log(jwtPayload, "bye");
@@ -37,6 +38,7 @@ const credentialsLogin = async (payload: Partial<IUser>) => {
   );
   console.log(accessToken, "hira");
   return {
+    jwtPayload,
     accessToken,
   };
 };

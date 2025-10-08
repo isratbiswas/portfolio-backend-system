@@ -6,6 +6,7 @@ import { ProjectService } from "./project.service";
 
 const createProject = CatchAsync(async (req: Request, res: Response) => {
   const project = await ProjectService.createProject(req.body);
+  console.log(project, "pr-8");
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,

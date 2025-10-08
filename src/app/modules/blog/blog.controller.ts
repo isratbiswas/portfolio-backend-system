@@ -6,7 +6,6 @@ import { BlogService } from "./blog.service";
 
 const createBlog = CatchAsync(async (req: Request, res: Response) => {
   const blog = await BlogService.createBlog(req.body);
-
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,

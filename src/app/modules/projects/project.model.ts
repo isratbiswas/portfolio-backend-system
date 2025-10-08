@@ -11,7 +11,6 @@ const ProjectSchema = new Schema<IProject>(
     features: { type: [String], default: [] },
     techStack: { type: [String], default: [] },
     tags: { type: [String], default: [] },
-    isFeatured: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

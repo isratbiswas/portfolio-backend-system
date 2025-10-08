@@ -5,13 +5,15 @@ import { Project } from "./project.model";
 const createProject = async (payload: Partial<IProject>) => {
   try {
     const project = await Project.create(payload);
+    console.log(project, "ps-7");
     if (!project) {
-      throw new AppError(400, "blog not created");
-      console.log("error");
+      console.log("project not created");
+      throw new AppError(400, "project not created");
     }
     return project;
   } catch (error) {
-    console.log(error, "something went wrong create at blog ");
+    throw new AppError(400, "something went wrong create at project ");
+    console.log(error, "something went wrong create at project ");
   }
 };
 
@@ -20,7 +22,7 @@ const getAllProject = async () => {
     const projects = await Project.find({});
     console.log(projects);
     if (projects.length === 0) {
-      throw new AppError(404, " blogs can not found");
+      throw new AppError(404, " projects can not found");
     }
     return projects;
   } catch (error) {
@@ -32,7 +34,7 @@ const getProjectById = async (projectId: string) => {
   try {
     const project = await Project.findById(projectId);
     if (!project) {
-      throw new AppError(404, "blog can not match blogId");
+      throw new AppError(404, "project can not match blogId");
     }
     return project;
   } catch (error) {
@@ -46,7 +48,7 @@ const projectUpdate = async (projectId: string, payload: Partial<IProject>) => {
       runValidators: true,
     });
     if (!project) {
-      throw new AppError(404, "blog can not update");
+      throw new AppError(404, "project can not update");
     }
     return project;
   } catch (error) {
@@ -58,7 +60,7 @@ const projectDelete = async (projectId: string) => {
   try {
     const project = await Project.findByIdAndDelete(projectId);
     if (!project) {
-      throw new AppError(404, "blog can not match blogId");
+      throw new AppError(404, "project can not match Id");
     }
     return project;
   } catch (error) {
