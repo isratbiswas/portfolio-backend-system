@@ -1,9 +1,14 @@
 import { Router } from "express";
 import { ProjectController } from "./project.controller";
+import { upload } from "../../middlewares/upload";
 
 const router = Router();
 router.get("/all-project", ProjectController.getAllProject);
-router.post("/create-project", ProjectController.createProject);
+router.post(
+  "/create-project",
+  upload.single("thumbnail"),
+  ProjectController.createProject
+);
 router.get("/:id", ProjectController.getProjectById);
 router.patch("/:id", ProjectController.projectUpdate);
 router.delete("/:id", ProjectController.projectDelete);
